@@ -30,7 +30,7 @@ namespace RPG
         }
         private int setDp()
         {
-            double tempDp = player.totalHp * RandomExtensions.NextDouble(0.03, 0.07) * player.level;
+            double tempDp = player.totalHp * RandomExtensions.NextDouble(0.02, 0.05) * player.level;
 
             return Convert.ToInt32(tempDp);
         }

@@ -13,7 +13,7 @@ namespace RPG
             Console.WriteLine("Accueil: "+ player.name + "\n");
             Console.WriteLine();
             Program.WriteFormattedLine("[{0}] ({1}/{2})", Program.colors[11], player.showXp(player.xp, player.xpNeeded), player.getXp(), player.getNeededXp());
-            Program.WriteFormattedLine("Vous avez {0} HP", Program.colors[10], player.getHp());
+            Program.WriteFormattedLine("Vous avez ({0}/{1}) HP", Program.colors[10], player.getHp(), player.getTotalHp());
             Program.WriteFormattedLine("Vous avez {0} Dégats d'attaque", Program.colors[10], player.getDp());
             Program.WriteFormattedLine("Vous êtes niveau {0}", Program.colors[10], player.getLevel());
             Program.WriteFormattedLine("Vous avez {0} golds", Program.colors[14], player.getGolds());

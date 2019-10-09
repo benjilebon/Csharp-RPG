@@ -15,7 +15,7 @@ namespace RPG
         public int xp = 0;
         public int xpNeeded = 0;
 
-        public Player(string name) : base(100, 10, 10)
+        public Player(string name) : base(100, 10, 15)
         {
             this.name = name;
             this.level = 1;
@@ -28,6 +28,10 @@ namespace RPG
         public string getHp()
         {
             return hp.ToString();
+        }
+        public string getTotalHp()
+        {
+            return totalHp.ToString();
         }
 
         public string getGolds()
@@ -92,7 +96,7 @@ namespace RPG
                 xp = 0;
                 xpNeeded = setNeededXp();
 
-                hp = Convert.ToInt32(hp * 1.15);
+                totalHp = Convert.ToInt32(hp * 1.15);
             }
         }
 

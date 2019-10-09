@@ -29,7 +29,7 @@ namespace RPG
         {
             Console.Clear();
             Program.WriteFormattedLine("{0}", Program.colors[12], "Vous êtes en combat ! \n");
-            Program.WriteFormattedLine("[{0}] {1} HP // Armor : {2}", Program.colors[10], visualHp(player.hp, totalPlayerHp), player.getHp(), player.getArmor());
+            Program.WriteFormattedLine("[{0}] ({1}/{2}) HP // Armor : {3}", Program.colors[10], visualHp(player.hp, totalPlayerHp), player.getHp(), player.getTotalHp(), player.getArmor());
             Program.WriteFormattedLine("[{0}] {1} HP // Armor : {2}", Program.colors[12], visualHp(monster.hp, totalMonsterHp), monster.getHp(), monster.getArmor());
             Console.WriteLine("");
         }

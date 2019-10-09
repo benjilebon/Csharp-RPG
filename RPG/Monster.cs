@@ -37,14 +37,14 @@ namespace RPG
 
         private int setGoldReward()
         {
-            double tempReward = 5 * RandomExtensions.NextDouble(0.80, 0.95) * player.level;
+            double tempReward = 10 * RandomExtensions.NextDouble(0.80, 0.95) * player.level;
 
             return Convert.ToInt32(tempReward);
         }
 
         private int setXpReward()
         {
-            double tempXp = 1000 * RandomExtensions.NextDouble(0.35, 0.60) * player.level;
+            double tempXp = 100 * RandomExtensions.NextDouble(0.35, 0.60) * player.level;
 
             return Convert.ToInt32(tempXp);
         }

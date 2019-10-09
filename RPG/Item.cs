@@ -12,12 +12,11 @@ namespace RPG
          */
         public int id = 0;
         public int golds = 0;
-        private int itemType = 0;
+        public int itemType = 0;
         public int value = 0;
-        private int level = 0;
+        public int level = 0;
         public string name = "";
         public string desc = "";
-        Player player;
 
         public Item(int id, int type, int value, int level, string name, string description, int golds)
         {
@@ -33,7 +32,7 @@ namespace RPG
         public void showItem()
         {
             Console.WriteLine("\n");
-            Console.WriteLine("          "+name);
+            Program.WriteFormattedLine("          "+name+" ({0} G)", Program.colors[14], golds.ToString());
             Console.WriteLine("          "+desc);
             Program.WriteFormattedLine("          {0}", Program.colors[5], negOrPos(value) + value + " " + getItemType());
             Console.WriteLine("          ID: " + id);

@@ -30,14 +30,14 @@ namespace RPG
         }
         private int setDp()
         {
-            double tempDp = player.totalHp * RandomExtensions.NextDouble(0.02, 0.05) * player.level / 3.5;
+            double tempDp = player.totalHp * RandomExtensions.NextDouble(0.06, 0.10) * player.level / 3;
 
             return Convert.ToInt32(tempDp);
         }
 
         private int setGoldReward()
         {
-            double tempReward = 10 * RandomExtensions.NextDouble(0.80, 0.95) * player.level;
+            double tempReward = 10 * RandomExtensions.NextDouble(0.40, 0.85) * player.level;
 
             return Convert.ToInt32(tempReward);
         }

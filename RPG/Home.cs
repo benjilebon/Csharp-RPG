@@ -20,11 +20,19 @@ namespace RPG
             Console.WriteLine("\n \n");
 
             Program.WriteFormattedLine("Appuyez sur {0} pour aller combattre", Program.colors[4], "c");
-            Program.WriteFormattedLine("Appuyez sur {0} pour aller dans le shop", Program.colors[4], "i");
+            Program.WriteFormattedLine("Appuyez sur {0} pour aller dans le shop", Program.colors[4], "s");
+            if (player.level >= 5)
+            {
+                Program.WriteFormattedLine("Appuyez sur {0} pour {1}", Program.colors[12], "t", "combattre le boss !");
+            }
             switch (Console.ReadKey().Key)
             {
                 case ConsoleKey.C: new Combat(player); break;
                 case ConsoleKey.I: new Shop(player); break;
+                case ConsoleKey.T:
+                    if (player.level >= 5) new Boss(player);
+                    else new Home(player);
+                    break;
                 default: new Home(player); break;
             }
         }

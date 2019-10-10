@@ -43,10 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Boss.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="Combat.cs" />
     <Compile Include="Items.data.cs" />
     <Compile Include="Item.cs" />
+    <Compile Include="Dragon.cs" />
     <Compile Include="Shop.cs" />
     <Compile Include="Init.cs" />
     <Compile Include="Home.cs" />

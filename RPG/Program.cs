@@ -31,7 +31,10 @@ namespace RPG
             string overInput = Console.ReadLine();
             if (overInput == "o")
             {
-                return;
+                Console.Clear();
+                Init f = new Init();
+                f.goHome();
+
             } else if (overInput == "n")
             {
                 Environment.Exit(0);

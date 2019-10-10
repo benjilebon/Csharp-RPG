@@ -6,39 +6,36 @@ namespace RPG
     {
         Player player;
 
-        public Shop(Player player, Item boughtItem = null, int error = 0)
+        public Shop(Player player, Item boughtItem = null, int error = 0, int p = 0)
         {
             this.player = player;
+            int page = (p != 0 ? p : player.level);  
             Console.Clear();
             Console.WriteLine("Boutique: " + player.name + "\n");
-            Console.WriteLine();
             Program.WriteFormattedLine("Vous avez {0} HP", Program.colors[10], player.getHp());
             Program.WriteFormattedLine("Vous avez {0} Armure", Program.colors[10], player.getArmor());
             Program.WriteFormattedLine("Vous avez {0} Dégats d'attaque", Program.colors[10], player.getDp());
             Program.WriteFormattedLine("Vous avez {0} golds", Program.colors[14], player.getGolds());
-            Console.WriteLine("\n \n");
+            Console.WriteLine("");
 
-            Console.WriteLine("\n ============================== \n");
+            Console.WriteLine("\n ============================================= \n");
 
             if (boughtItem is Item)
             {
                 Console.WriteLine("Vous avez acheté : " + boughtItem.name);
             } else
             {
-                foreach (Item item in ItemsData.getItems(player.level))
+                foreach (Item item in ItemsData.getItemsPage(page, ItemsData.getItems(player.level)))
                 {
                     item.showItem();
                 }
             }
-
-            Console.WriteLine("\n ============================== \n");
+            Console.WriteLine("\n ===================Page "+page+"====================");
+            Console.WriteLine(" ============================================= \n");
 
             if (boughtItem is Item)
             {
                 Program.WriteFormattedLine("Appuyez sur N'importe quelle touche pour retourner à la boutique", Program.colors[4], "");
-            } else
-            {
-                Program.WriteFormattedLine("Entrez l'{0} de l'objet que vous souhaitez acheter", Program.colors[4], "ID");
             }
 
             if (error == 1)
@@ -50,10 +47,33 @@ namespace RPG
             {
                 Program.WriteFormattedLine("{0}", Program.colors[4], "Vous avez déjà tous vos points de vie");
             }
+            Program.WriteFormattedLine("Appuyez sur {0} pour acheter un item", Program.colors[4], "Enter");
             Program.WriteFormattedLine("Appuyez sur {0} pour retourner à l'accueil", Program.colors[4], "b");
-            string shopInput = Console.ReadLine();
+            if (boughtItem is Item)
+            {
 
-            if (Int32.TryParse(shopInput, out int res))
+            }
+            ConsoleKey shopInput = Console.ReadKey().Key;
+            string itemInput = "";
+            switch(shopInput)
+            {
+                case ConsoleKey.Enter:
+                    Program.WriteFormattedLine("Entrez l'{0} de l'objet que vous souhaitez acheter", Program.colors[4], "ID");
+                    itemInput = Console.ReadLine();
+                    break;
+                case ConsoleKey.B:         new Home(player); break;
+                case ConsoleKey.LeftArrow:
+                    page--;
+                    new Shop(player, null, 0, page);
+                    break;
+                case ConsoleKey.RightArrow:
+                    page++;
+                    new Shop(player, null, 0, page);
+                    break;
+                default:                   new Shop(player); break;
+            }
+
+            if (Int32.TryParse(itemInput, out int res))
             {
                 Item item = ItemsData.getItems(player.level).Find(x => x.id == res);
 
@@ -68,7 +88,7 @@ namespace RPG
 
 
             }
-            else if (shopInput == "b")
+            else if (itemInput == "b")
             {
                 new Home(player);
             }

@@ -26,6 +26,13 @@ namespace RPG
             return sortedItems;
         }
 
+        public static List<Item> getItemsPage(int level, List<Item> list)
+        {
+            List<Item> sortedPage = list.FindAll(x => x.level == level);
+
+            return sortedPage;
+        }
+
 
         
     }

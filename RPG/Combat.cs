@@ -109,6 +109,11 @@ namespace RPG
                     
                 }
             }
+
+            else
+            {
+                return;
+            }
         }
 
         public void goHome()

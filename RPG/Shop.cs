@@ -12,7 +12,7 @@ namespace RPG
             int page = (p != 0 ? p : player.level);  
             Console.Clear();
             Console.WriteLine("Boutique: " + player.name + "\n");
-            Program.WriteFormattedLine("Vous avez {0} HP", Program.colors[10], player.getHp());
+            Program.WriteFormattedLine("Vous avez ({0}/{1}) HP", Program.colors[10], player.getHp(), player.getTotalHp());
             Program.WriteFormattedLine("Vous avez {0} Armure", Program.colors[10], player.getArmor());
             Program.WriteFormattedLine("Vous avez {0} Dégats d'attaque", Program.colors[10], player.getDp());
             Program.WriteFormattedLine("Vous avez {0} golds", Program.colors[14], player.getGolds());
@@ -36,6 +36,7 @@ namespace RPG
             if (boughtItem is Item)
             {
                 Program.WriteFormattedLine("Appuyez sur N'importe quelle touche pour retourner à la boutique", Program.colors[4], "");
+                Console.ReadKey();
             }
 
             if (error == 1)
@@ -49,28 +50,27 @@ namespace RPG
             }
             Program.WriteFormattedLine("Appuyez sur {0} pour acheter un item", Program.colors[4], "Enter");
             Program.WriteFormattedLine("Appuyez sur {0} pour retourner à l'accueil", Program.colors[4], "b");
-            if (boughtItem is Item)
-            {
-
-            }
-            ConsoleKey shopInput = Console.ReadKey().Key;
             string itemInput = "";
-            switch(shopInput)
+            if (!(boughtItem is Item))
             {
-                case ConsoleKey.Enter:
-                    Program.WriteFormattedLine("Entrez l'{0} de l'objet que vous souhaitez acheter", Program.colors[4], "ID");
-                    itemInput = Console.ReadLine();
-                    break;
-                case ConsoleKey.B:         new Home(player); break;
-                case ConsoleKey.LeftArrow:
-                    page--;
-                    new Shop(player, null, 0, page);
-                    break;
-                case ConsoleKey.RightArrow:
-                    page++;
-                    new Shop(player, null, 0, page);
-                    break;
-                default:                   new Shop(player); break;
+                ConsoleKey shopInput = Console.ReadKey().Key;
+                switch(shopInput)
+                {
+                    case ConsoleKey.Enter:
+                        Program.WriteFormattedLine("Entrez l'{0} de l'objet que vous souhaitez acheter", Program.colors[4], "ID");
+                        itemInput = Console.ReadLine();
+                        break;
+                    case ConsoleKey.B:         new Home(player); break;
+                    case ConsoleKey.LeftArrow:
+                        page--;
+                        new Shop(player, null, 0, page);
+                        break;
+                    case ConsoleKey.RightArrow:
+                        page++;
+                        new Shop(player, null, 0, page);
+                        break;
+                    default:                   new Shop(player); break;
+                }
             }
 
             if (Int32.TryParse(itemInput, out int res))

@@ -21,10 +21,10 @@ namespace RPG
 
             Program.WriteFormattedLine("Appuyez sur {0} pour aller combattre", Program.colors[4], "c");
             Program.WriteFormattedLine("Appuyez sur {0} pour aller dans le shop", Program.colors[4], "i");
-            switch (Console.ReadLine())
+            switch (Console.ReadKey().Key)
             {
-                case "c": new Combat(player); break;
-                case "i": new Shop(player); break;
+                case ConsoleKey.C: new Combat(player); break;
+                case ConsoleKey.I: new Shop(player); break;
                 default: new Home(player); break;
             }
         }

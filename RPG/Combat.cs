@@ -62,14 +62,13 @@ namespace RPG
                 showCombat();
 
                 Program.WriteFormattedLine("Appuyez sur {0} pour attaquer !", Program.colors[4], "a");
-                switch (Console.ReadLine())
+                switch (Console.ReadKey().Key)
                 {
-                    case "a":
+                    case ConsoleKey.A:
                         player.receiveAttack(monster);
                         monster.receiveAttack(player);
                         break;
                     default:
-                        Console.WriteLine("Veuillez entrer un choix valide");
                         break;
                 }
             }
@@ -102,9 +101,9 @@ namespace RPG
                 Console.WriteLine();
                 Program.WriteFormattedLine("Appuyez sur {0} pour retourner à l'accueil", Program.colors[4], "b");
 
-                switch (Console.ReadLine())
+                switch (Console.ReadKey().Key)
                 {
-                    case "b": goHome(); break;
+                    case ConsoleKey.B: goHome(); break;
                     default: endCombat(won, true); break;
                     
                 }

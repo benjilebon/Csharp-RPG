@@ -18,17 +18,27 @@ namespace RPG
                 Console.Clear();
                 Init g = new Init();
                 g.goHome();
-                gameOver();
-            } while (Console.ReadLine() == "o");
+            } while (true);
         }
 
-        private static void gameOver()
+        public static void gameOver()
         {
             Console.Clear();
             Program.WriteFormattedLine("{0}", Program.colors[4], "===============================");
             Program.WriteFormattedLine("{0}", Program.colors[4], "===========GAME OVER===========");
             Program.WriteFormattedLine("{0}", Program.colors[4], "===============================");
             Console.WriteLine("Voulez vous rejouer ? (o/n)");
+            string overInput = Console.ReadLine();
+            if (overInput == "o")
+            {
+                return;
+            } else if (overInput == "n")
+            {
+                Environment.Exit(0);
+            } else
+            {
+                gameOver();
+            }
         }
 
         public static void WriteFormattedLine(string format, ConsoleColor color, params string[] answers)

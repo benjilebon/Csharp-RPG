@@ -18,22 +18,6 @@ namespace RPG
             player = new Player(name);
         }
 
-        //private void Run()
-        //{
-        //    while (player.hp > 0 && m.hp > 0)
-        //    {
-        //        Console.WriteLine(player.name + ": " + player.hp + " hp");
-        //        Console.WriteLine("Monster: " + m.hp + " hp");
-        //        Console.ReadLine();
-        //        player.receiveAttack(m);
-        //        m.receiveAttack(player);
-        //    }
-        //    if (m.hp <= 0)
-        //        Console.WriteLine("You win!");
-        //    else
-        //        Console.WriteLine("You lose...");
-        //}
-
         public void goHome()
         {
             new Home(player);

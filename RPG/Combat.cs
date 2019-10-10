@@ -112,6 +112,7 @@ namespace RPG
 
             else
             {
+                Program.gameOver();
                 return;
             }
         }

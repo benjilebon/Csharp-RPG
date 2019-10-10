@@ -15,7 +15,7 @@ namespace RPG
         public int xp = 0;
         public int xpNeeded = 0;
 
-        public Player(string name) : base(120, 10, 15)
+        public Player(string name) : base(120, 15, 25)
         {
             this.name = name;
             this.level = 1;

@@ -28,7 +28,7 @@ namespace RPG
             switch (Console.ReadKey().Key)
             {
                 case ConsoleKey.C: new Combat(player); break;
-                case ConsoleKey.I: new Shop(player); break;
+                case ConsoleKey.S: new Shop(player); break;
                 case ConsoleKey.T:
                     if (player.level >= 5) new Boss(player);
                     else new Home(player);

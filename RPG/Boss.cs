@@ -78,7 +78,7 @@ namespace RPG
                 endCombat(false);
         }
 
-        private void endCombat(bool won, bool loop = false)
+        private void endCombat(bool won, int rndSaved = 0, bool loop = false)
         {
 
 
@@ -99,20 +99,58 @@ namespace RPG
                 player.checkLevelUp();
 
                 Console.WriteLine();
-                Program.WriteFormattedLine("Appuyez sur {0} pour retourner à l'accueil", Program.colors[4], "b");
+                Program.WriteFormattedLine("Appuyez sur {0} pour recommencer", Program.colors[4], "o");
 
                 switch (Console.ReadKey().Key)
                 {
-                    case ConsoleKey.B: goHome(); break;
-                    default: endCombat(won, true); break;
+                    case ConsoleKey.O:
+                        Console.Clear();
+                        Init f = new Init();
+                        f.goHome();
+                        break;
+                    default: endCombat(won, 0, true); break;
                     
                 }
             }
 
             else
             {
-                Program.gameOver();
-                return;
+                Random rnd = new Random();
+                int save = rnd.Next(0, 10);
+                if (save > 5 || loop)
+                {
+                    showCombat();
+                    Console.WriteLine("\n");
+                    Program.WriteFormattedLine("{0}", Program.colors[4], "=============== Vous avez perdu ! ===============");
+                    Program.WriteFormattedLine("{0}", Program.colors[4], "...Mais vous parvenez à vous enfuir de justesse !");
+
+                    Program.WriteFormattedLine("{0}", Program.colors[14], "+ " + dragon.goldReward + " G");
+                    if (!loop) player.golds += dragon.goldReward / 2;
+
+
+                    Program.WriteFormattedLine("{0}", Program.colors[11], "+ " + dragon.xpReward + " XP");
+                    if (!loop) player.xp += dragon.xpReward / 2;
+
+                    player.checkLevelUp();
+
+                    player.hp = Convert.ToInt32(player.totalHp * 0.10);
+
+                    Console.WriteLine();
+                    Program.WriteFormattedLine("Appuyez sur {0} pour retourner à l'accueil", Program.colors[4], "b");
+
+                    switch (Console.ReadKey().Key)
+                    {
+                        case ConsoleKey.B:
+                            new Home(player);
+                            break;
+                        default: endCombat(won, save, true); break;
+
+                    }
+
+                } else
+                {
+                    Program.gameOver();
+                }
             }
         }
 

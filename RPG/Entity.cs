@@ -22,7 +22,8 @@ namespace RPG
 
         public void receiveAttack(Entity attacker)
         {
-            double multiplier = (double) 100 / (100 + armor);
+            double multiplier = (double) 75 / (75 + armor);
+            int test = Convert.ToInt32((double)attacker.dp * multiplier);
             hp -= Convert.ToInt32((double)attacker.dp * multiplier);
             if (this.hp < 0)
                 this.hp = 0;

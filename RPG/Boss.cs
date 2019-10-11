@@ -84,19 +84,21 @@ namespace RPG
 
             if (won)
             {
-                showCombat();
-                Console.WriteLine("\n");
+                //showCombat();
+                //Console.WriteLine("\n");
+                Console.Clear();
                 Program.WriteFormattedLine("{0}", Program.colors[2], "======== Vous avez gagné ! ========");
+                Program.WriteFormattedLine("{0}", Program.colors[2], "##======= Félicitations ! =======##");
 
 
-                Program.WriteFormattedLine("{0}", Program.colors[14], "+ " + dragon.goldReward + " G");
-                if (!loop) player.golds += dragon.goldReward;
+                //Program.WriteFormattedLine("{0}", Program.colors[14], "+ " + dragon.goldReward + " G");
+                //if (!loop) player.golds += dragon.goldReward;
 
 
-                Program.WriteFormattedLine("{0}", Program.colors[11], "+ " + dragon.xpReward + " XP");
-                if (!loop) player.xp += dragon.xpReward;
+                //Program.WriteFormattedLine("{0}", Program.colors[11], "+ " + dragon.xpReward + " XP");
+                //if (!loop) player.xp += dragon.xpReward;
 
-                player.checkLevelUp();
+                //player.checkLevelUp();
 
                 Console.WriteLine();
                 Program.WriteFormattedLine("Appuyez sur {0} pour recommencer", Program.colors[4], "o");

@@ -24,13 +24,13 @@ namespace RPG
 
         private int setHp()
         {
-            double tempHp = 250 * RandomExtensions.NextDouble(0.70, 0.70) * 5 / 2;
+            double tempHp = 350 * RandomExtensions.NextDouble(0.70, 0.70) * 5 / 2;
 
             return Convert.ToInt32(tempHp);
         }
         private int setDp()
         {
-            double tempDp = 250 * RandomExtensions.NextDouble(0.10, 0.10) * 5 / 3.5;
+            double tempDp = 280 * RandomExtensions.NextDouble(0.12, 0.12) * 5 / 3.5;
 
             return Convert.ToInt32(tempDp);
         }
@@ -51,7 +51,7 @@ namespace RPG
 
         private int setArmor()
         {
-            double tempArmor = 10 + (5 * RandomExtensions.NextDouble(6.00, 6.00));
+            double tempArmor = 20 + (5 * RandomExtensions.NextDouble(6.00, 6.00));
 
             return Convert.ToInt32(tempArmor);
         }

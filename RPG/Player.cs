@@ -96,7 +96,9 @@ namespace RPG
                 xp = 0;
                 xpNeeded = setNeededXp();
 
-                totalHp = Convert.ToInt32(totalHp * 1.15);
+                dp += 5;
+                hp += Convert.ToInt32(totalHp / 3);
+                totalHp = Convert.ToInt32(totalHp * 1.25);
             }
         }
 
